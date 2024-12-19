@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Nilai Mahasiswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0713ff;
+            padding: 20px;
+        }
+        header img {
+            width: 120px;
+            margin-right: 20px;
+        }
+        header h1 {
+            font-size: 2rem;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #555;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="d:\E-COURT\Universitas Indonesia (1).png" alt="d:\E-COURT\Universitas Indonesia (1).png">
+        <h1>Rekap Nilai Mahasiswa</h1>
+    </header>
+    <div class="container">
+        <h2>Form Input Nilai</h2>
+        <form id="form">
+            <div class="form-group">
+                <label for="nama">Nama Mahasiswa:</label>
+                <input type="text" id="nama" placeholder="Masukkan Nama">
+            </div>
+            <div class="form-group">
+                <label for="nim">NIM:</label>
+                <input type="text" id="nim" placeholder="Masukkan NIM">
+            </div>
+            <div class="form-group">
+                <label for="nilai">Nilai:</label>
+                <input type="number" id="nilai" placeholder="Masukkan Nilai">
+            </div>
+            <button type="button" onclick="tambahData()">Tambah Data</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>NIM</th>
+                    <th>Nilai</th>
+                </tr>
+            </thead>
+            <tbody id="data"></tbody>
+        </table>
+    </div>
+    <div class="container">
+        <h2>Galeri Dokumentasi</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/150" alt="Foto 1">
+            <img src="https://via.placeholder.com/150" alt="Foto 2">
+            <img src="https://via.placeholder.com/150" alt="Foto 3">
+            <img src="https://via.placeholder.com/150" alt="Foto 4">
+        </div>
+    </div>
+    <script>
+        let no = 1;
+        function tambahData() {
+            const nama = document.getElementById('nama').value;
+            const nim = document.getElementById('nim').value;
+            const nilai = document.getElementById('nilai').value;
+
+            if (nama === '' || nim === '' || nilai === '') {
+                alert('Semua kolom harus diisi!');
+                return;
+            }
+
+            const table = document.getElementById('data');
+            const row = table.insertRow();
+
+            row.innerHTML = `
+                <td>${no++}</td>
+                <td>${nama}</td>
+                <td>${nim}</td>
+                <td>${nilai}</td>
+            `;
+
+            document.getElementById('form').reset();
+        }
+    </script>
+</body>
+</html>
